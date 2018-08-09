@@ -12,6 +12,18 @@
           <a href="javascript:(function()%7B%22use%20strict%22%3B!function%20t(i%2Cn)%7Bvar%20r%3Dn.find(&#39;.buttons-right%20a%5Bhref%24%3D%22%3D&#39;%2Bi%2B&#39;%22%5D&#39;)%3Bif(!r.length)%7Bvar%20e%3D%24(%22li%3Anot(.disabled)%20%3E%20a%3Acontains(Next)%22)%3Breturn%20e.length%3F(e.click()%2CsetTimeout(t%2C250%2Ci%2Cn))%3Aalert(%22Could%20not%20find%20target.%22)%7Dvar%20a%3Dr.closest(%22.ir-thumbnail%22)%3Ba.find(%22.glyphicon-ok%22).click()%2Ca%5B0%5D.scrollIntoView()%7D(function(t)%7Bvar%20i%3Dt.indexOf(%22%3F%22)%2Cn%3Dnew%20URLSearchParams(t.slice(i)).get(%22highlight%22)%3Bif(!n)throw%20new%20Error(%22Cannot%20search%20for%20missing%20target.%22)%3Breturn%20n%7D(location.hash)%2C%24(%22.ir-thumbnail-container%22))%3B%7D)()">find-image</a>
           <sup><a href="src/find-image.js">src</a></sup>
         </li>
+        <li>
+          <a href="javascript:(function()%7B%22use%20strict%22%3B!function()%7Bvar%20e%3D%22%23dfd%22%2Ct%3D%22%23fdd%22%2Cr%3D%22%23eee%22%2Cn%3D(prompt(%22Enter%20a%20search%20term%3A%22)%7C%7C%22%22).trim()%3Bif(n)%7Bvar%20a%3D!0%2Cl%3D!1%2Co%3Dvoid%200%3Btry%7Bfor(var%20d%2Ci%3Ddocument.querySelectorAll(%22a.ng-binding%20small%22)%5BSymbol.iterator%5D()%3B!(a%3D(d%3Di.next()).done)%3Ba%3D!0)%7Bvar%20c%3Dd.value.parentNode%3Bif(c.textContent.includes(n))%7Bvar%20u%3Dc.querySelector(%22small%22).textContent.match(%2F(%5Cw)(%5Cd)%2F)%2Cf%3Du%5B1%5D%2Cs%3D%2Bu%5B2%5D%3Bc.style.background%3D%22C%22%3D%3D%3Df%7C%7C%22D%22%3D%3D%3Df%26%26s%3C4%3Fe%3A%22D%22%3D%3D%3Df%3Ft%3Ar%7Delse%20c.style.background%3D%22%22%7D%7Dcatch(e)%7Bl%3D!0%2Co%3De%7Dfinally%7Btry%7B!a%26%26i.return%26%26i.return()%7Dfinally%7Bif(l)throw%20o%7D%7D%7D%7D()%3B%7D)()">highlight-cases</a>
+          <sup><a href="src/highlight-cases.js">src</a></sup>
+        </li>
+        <li>
+          <a href="javascript:(function()%7B%22use%20strict%22%3B!function(t)%7Bif(t%3Dwindow.getSelection().toString().trim())%7Bif(%2F%5CD%2F.test(t))return%20alert(%22Selected%20text%20is%20not%20a%20number.%22)%7Delse%20t%3Dwindow.prompt(%22User%20%23%22).trim()%3Blocation.href%3D%22https%3A%2F%2Fwww.imagerights.com%2Fadmin_impersonation%2F%22%2Bt%7D()%3B%7D)()">impersonate-user</a>
+          <sup><a href="src/impersonate-user.js">src</a></sup>
+        </li>
+        <li>
+          <a href="javascript:(function()%7B%22use%20strict%22%3B!function(t)%7Bif(t%3Dwindow.getSelection().toString().trim())%7Bif(%2F%5CD%2F.test(t))return%20alert(%22Selected%20text%20is%20not%20a%20case%20number.%22)%3Bt%2B%3D%22%2Fclaims%22%7Delse%20t%3Dwindow.prompt(%22Case%20%23%22).trim()%2C%2F%5CD%2F.test(t)%7C%7C(t%2B%3D%22%2Fclaims%22)%3Bwindow.open(%22https%3A%2F%2Fwww.imagerights.com%2Fadmin%23%2Fcases%2F%22%2Bt)%7D()%3B%7D)()">open-case</a>
+          <sup><a href="src/open-case.js">src</a></sup>
+        </li>
     </ul>
   </body>
 </html>
