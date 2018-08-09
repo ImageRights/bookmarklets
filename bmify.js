@@ -1,5 +1,4 @@
 'use strict'
-/* eslint-disable no-unused-vars */
 const path = require('path')
 const {promisify} = require('util')
 const fs = require('fs')
