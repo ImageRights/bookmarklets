@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ImageRights Bookmarklets</title>
+  </head>
+  <body>
+    <h1>ImageRights Bookmarklets</h1>
+    <p>Drag a bookmarklet link below into your bookmarks bar to use it.</p>
+    <ul>
+        <li>
+          <a href="javascript:(function()%7B%22use%20strict%22%3B!function%20t(i%2Cn)%7Bvar%20r%3Dn.find(&#39;.buttons-right%20a%5Bhref%24%3D%22%3D&#39;%2Bi%2B&#39;%22%5D&#39;)%3Bif(!r.length)%7Bvar%20e%3D%24(%22li%3Anot(.disabled)%20%3E%20a%3Acontains(Next)%22)%3Breturn%20e.length%3F(e.click()%2CsetTimeout(t%2C250%2Ci%2Cn))%3Aalert(%22Could%20not%20find%20target.%22)%7Dvar%20a%3Dr.closest(%22.ir-thumbnail%22)%3Ba.find(%22.glyphicon-ok%22).click()%2Ca%5B0%5D.scrollIntoView()%7D(function(t)%7Bvar%20i%3Dt.indexOf(%22%3F%22)%2Cn%3Dnew%20URLSearchParams(t.slice(i)).get(%22highlight%22)%3Bif(!n)throw%20new%20Error(%22Cannot%20search%20for%20missing%20target.%22)%3Breturn%20n%7D(location.hash)%2C%24(%22.ir-thumbnail-container%22))%3B%7D)()">find-image</a>
+          <sup><a href="src/find-image.js">src</a></sup>
+        </li>
+    </ul>
+  </body>
+</html>

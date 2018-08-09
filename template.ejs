@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ImageRights Bookmarklets</title>
+  </head>
+  <body>
+    <h1>ImageRights Bookmarklets</h1>
+    <p>Drag a bookmarklet link below into your bookmarks bar to use it.</p>
+    <ul>
+      <%_ bookmarklets.forEach(({name, url}) => { -%>
+        <li>
+          <a href="<%= url %>"><%= name %></a>
+          <sup><a href="src/<%= name %>.js">src</a></sup>
+        </li>
+      <%_ }) -%>
+    </ul>
+  </body>
+</html>
