@@ -1,6 +1,6 @@
 ;(function () {
   const idx = location.hash.indexOf('?')
-  const target = new URLSearchParams(location.hash.slice(idx)).get('highlight')
+  const target = new URLSearchParams(location.hash.slice(idx + 1)).get('highlight')
   if (!target) {
     return alert('Cannot search for missing target.')
   }
