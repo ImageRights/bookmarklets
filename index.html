@@ -5,20 +5,7 @@
   <title>ImageRights Bookmarklets</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.slim.min.js" integrity="sha256-Rf4BadfyCtsvHmO89BUZcbYvNNvZvOT08ALfEzvCsD0=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" integrity="sha256-ruP2+uorUblSeg7Tozk75u8TaSUKRCZVvNV0zRGxkRQ=" crossorigin="anonymous"></script>
-  <script>
-  var app = angular.module('bookmarklets', []);
-  app.controller('main', function ($scope, $http) {
-    angular.element('a[ng-href]').each(function (idx, elt) {
-      var name = angular.element(elt).attr('ng-href').slice(2, -2)
-      if ($scope.hasOwnProperty(name)) {
-        throw new Error('Duplicate name: ' + name)
-      }
-      $http.get('dist/' + name + '.js').then(function (res) {
-        $scope[name] = res.data
-      })
-    })
-  });
-  </script>
+  <script src="app.js"></script>
 </head>
 <body ng-controller="main">
   <h1>ImageRights Bookmarklets &amp; Tools</h1>
