@@ -1,33 +1,92 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>ImageRights Bookmarklets</title>
-  </head>
-  <body>
-    <h1>ImageRights Bookmarklets</h1>
-    <p>Drag a bookmarklet link below into your bookmarks bar to use it.</p>
-    <ul>
-        <li>
-          <a href="javascript:(function()%7B%22use%20strict%22%3B!function()%7Bvar%20t%3Dlocation.hash.indexOf(%22%3F%22)%2Ca%3Dnew%20URLSearchParams(location.hash.slice(t)).get(%22highlight%22)%3Bif(!a)return%20alert(%22Cannot%20search%20for%20missing%20target.%22)%3Bvar%20e%3Dprompt(%22Enter%20a%20delay%20in%20milliseconds%3A%22%2C500)%3Bif(e)%7Bif(!(e%7C%3D0))return%20alert(%22Invalid%20delay.%22)%3Bvar%20l%3D%24(%22.ir-thumbnail-container%22)%3B(function%20t()%7Bvar%20i%3Dl.find(&#39;.buttons-right%20a%5Bhref%24%3D%22%3D&#39;%2Ba%2B&#39;%22%5D&#39;)%3Bif(i.length)%7Bvar%20n%3Di.closest(%22.ir-thumbnail%22)%3Breturn%20n.find(%22.glyphicon-ok%22).click()%2Cn%5B0%5D.scrollIntoView()%7Dvar%20r%3D%24(%22li%3Anot(.disabled)%20%3E%20a%3Acontains(Next)%22)%3Breturn%20r.length%3F(r.click()%2CsetTimeout(t%2Ce%2Ca%2Cl%2Ce))%3Aalert(%22Could%20not%20find%20target.%22)%7D)()%7D%7D()%3B%7D)()">find-image</a>
-          <sup><a href="src/find-image.js">src</a></sup>
-        </li>
-        <li>
-          <a href="javascript:(function()%7B%22use%20strict%22%3B!function()%7Bvar%20e%3D%22%23dfd%22%2Ct%3D%22%23fdd%22%2Cr%3D%22%23eee%22%2Cn%3D(prompt(%22Enter%20a%20search%20term%3A%22)%7C%7C%22%22).trim()%3Bif(n)%7Bvar%20a%3D!0%2Cl%3D!1%2Co%3Dvoid%200%3Btry%7Bfor(var%20d%2Ci%3Ddocument.querySelectorAll(%22a.ng-binding%20small%22)%5BSymbol.iterator%5D()%3B!(a%3D(d%3Di.next()).done)%3Ba%3D!0)%7Bvar%20c%3Dd.value.parentNode%3Bif(c.textContent.includes(n))%7Bvar%20u%3Dc.querySelector(%22small%22).textContent.match(%2F(%5Cw)(%5Cd)%2F)%2Cf%3Du%5B1%5D%2Cs%3D%2Bu%5B2%5D%3Bc.style.background%3D%22C%22%3D%3D%3Df%7C%7C%22D%22%3D%3D%3Df%26%26s%3C4%3Fe%3A%22D%22%3D%3D%3Df%3Ft%3Ar%7Delse%20c.style.background%3D%22%22%7D%7Dcatch(e)%7Bl%3D!0%2Co%3De%7Dfinally%7Btry%7B!a%26%26i.return%26%26i.return()%7Dfinally%7Bif(l)throw%20o%7D%7D%7D%7D()%3B%7D)()">highlight-cases</a>
-          <sup><a href="src/highlight-cases.js">src</a></sup>
-        </li>
-        <li>
-          <a href="javascript:(function()%7B%22use%20strict%22%3B!function(t)%7Bif(t%3Dwindow.getSelection().toString().trim())%7Bif(%2F%5CD%2F.test(t))return%20alert(%22Selected%20text%20is%20not%20a%20number.%22)%7Delse%20t%3Dwindow.prompt(%22User%20%23%22).trim()%3Blocation.href%3D%22https%3A%2F%2Fwww.imagerights.com%2Fadmin_impersonation%2F%22%2Bt%7D()%3B%7D)()">impersonate-user</a>
-          <sup><a href="src/impersonate-user.js">src</a></sup>
-        </li>
-        <li>
-          <a href="javascript:(function()%7B%22use%20strict%22%3Bfunction%20_asyncToGenerator(e)%7Breturn%20function()%7Bvar%20o%3De.apply(this%2Carguments)%3Breturn%20new%20Promise(function(c%2Ca)%7Breturn%20function%20n(e%2Cr)%7Btry%7Bvar%20t%3Do%5Be%5D(r)%2Ci%3Dt.value%7Dcatch(e)%7Breturn%20void%20a(e)%7Dif(!t.done)return%20Promise.resolve(i).then(function(e)%7Bn(%22next%22%2Ce)%7D%2Cfunction(e)%7Bn(%22throw%22%2Ce)%7D)%3Bc(i)%7D(%22next%22)%7D)%7D%7D!function()%7Bvar%20e%2Cr%3D(e%3D_asyncToGenerator(regeneratorRuntime.mark(function%20e()%7Bvar%20n%2Cr%2Ct%3Breturn%20regeneratorRuntime.wrap(function(e)%7Bfor(%3B%3B)switch(e.prev%3De.next)%7Bcase%200%3Aif(!(n%3Dangular.element(%22.glyphicon-chevron-right%5Bng-click%5E%3Dtoggle_expand_all%5D%22)).length)%7Be.next%3D5%3Bbreak%7Dreturn%20n.triggerHandler(%22click%22)%2Ce.next%3D5%2Ci(200)%3Bcase%205%3Aif(!(r%3Dangular.element(%22.ha-sighting-header%22).first().find(%22.glyphicon-chevron-right%22)).length)%7Be.next%3D10%3Bbreak%7Dreturn%20r.triggerHandler(%22click%22)%2Ce.next%3D10%2Ci(100)%3Bcase%2010%3A(t%3Dangular.element(%22.ha-sighting-row%22).first().find(%22input%5Btype%3Dcheckbox%5D%22)).prop(%22checked%22)%7C%7Ct.trigger(%22click%22)%3Bcase%2012%3Acase%22end%22%3Areturn%20e.stop()%7D%7D%2Ce%2Cthis)%7D))%2Cfunction()%7Breturn%20e.apply(this%2Carguments)%7D)%2Ci%3Dfunction(n%2Cr)%7Breturn%20new%20Promise(function(e)%7Breturn%20setTimeout(e%2Cn%2Cr)%7D)%7D%3Br()%2Cdocument.addEventListener(%22keyup%22%2Cfunction(e)%7Bif(%22ArrowLeft%22%3D%3D%3De.key%7C%7C%22ArrowRight%22%3D%3D%3De.key)%7Bvar%20n%3D%22ArrowLeft%22%3D%3D%3De.key%3F%22.btn-danger%22%3A%22.btn-success%22%3Bangular.element(n).triggerHandler(%22click%22)%2CsetTimeout(r%2C500)%7D%7D)%7D()%3B%7D)()">keyboard-verify</a>
-          <sup><a href="src/keyboard-verify.js">src</a></sup>
-        </li>
-        <li>
-          <a href="javascript:(function()%7B%22use%20strict%22%3B!function(t)%7Bif(t%3Dwindow.getSelection().toString().trim())%7Bif(%2F%5CD%2F.test(t))return%20alert(%22Selected%20text%20is%20not%20a%20case%20number.%22)%3Bt%2B%3D%22%2Fclaims%22%7Delse%20t%3Dwindow.prompt(%22Case%20%23%22).trim()%2C%2F%5CD%2F.test(t)%7C%7C(t%2B%3D%22%2Fclaims%22)%3Bwindow.open(%22https%3A%2F%2Fwww.imagerights.com%2Fadmin%23%2Fcases%2F%22%2Bt)%7D()%3B%7D)()">open-case</a>
-          <sup><a href="src/open-case.js">src</a></sup>
-        </li>
-    </ul>
-  </body>
+<html lang="en" dir="ltr" ng-app="bookmarklets">
+<head>
+  <meta charset="utf-8">
+  <title>ImageRights Bookmarklets</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.slim.min.js" integrity="sha256-Rf4BadfyCtsvHmO89BUZcbYvNNvZvOT08ALfEzvCsD0=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" integrity="sha256-ruP2+uorUblSeg7Tozk75u8TaSUKRCZVvNV0zRGxkRQ=" crossorigin="anonymous"></script>
+  <script>
+  var app = angular.module('bookmarklets', []);
+  app.controller('main', function ($scope, $http) {
+    angular.element('a[ng-href]').each(function (idx, elt) {
+      var name = angular.element(elt).attr('ng-href').slice(2, -2)
+      if ($scope.hasOwnProperty(name)) {
+        throw new Error('Duplicate name: ' + name)
+      }
+      $http.get('dist/' + name + '.js').then(function (res) {
+        $scope[name] = res.data
+      })
+    })
+  });
+  </script>
+</head>
+<body ng-controller="main">
+  <h1>ImageRights Bookmarklets &amp; Tools</h1>
+  <p>Drag a bookmarklet link below into your bookmarks bar to use it.</p>
+  <h2>Bookmarklets</h2>
+  <h2>TODO: Convert static EJS to dynamic angular?</h2>
+  <ul>
+    <li>
+      <p>
+        <a ng-href="{{find_image}}">Find Image</a>: Automatically scroll through
+        an image set to find an image. To use: Search for an image by name.
+        Click the link to open the image set. Click the bookmarklet. It will ask
+        you to enter a time in milliseconds to wait between page loads,
+        defaulting to 500 ms. Enter what your computer can handle. If you enter
+        too short a time, pages won't have enough time to load before the script
+        skips to the next page. The target image will be highlighted once the
+        script has found it.
+      </p>
+    </li>
+    <li>
+      <p>
+        <a ng-href="{{highlight_cases}}">Highlight Cases</a>: Make finding other
+        cases with the same infringer/client easier by highlighting matches in
+        the case list. Uses different colors for new, active, and closed/settled
+        cases. To use: View other cases against an infringer, then click the
+        bookmarklet. It will ask you for a name to search for and then it will
+        highlight all cases that have that name. Bonus tip: Search for
+        punctuation (e.g. <kbd>/</kbd>, <kbd>#</kbd>) to highlight all cases.
+      </p>
+    </li>
+    <li>
+      <p>
+        <a ng-href="{{impersonate_user}}">Impersonate User</a>: Impersonate a
+        user. To use: Either highlight a user ID number and then click the
+        bookmarklet or click the bookmarklet and then enter a user ID number.
+      </p>
+    </li>
+    <!-- <li>
+      <p>
+        <a ng-href="{{keyboard_verify}}">Keyboard Verify</a>: Make verifying
+        unconfirmed image sightings faster by using keyboard input. Works best
+        when verifying groups of images with one sighting per domain. To use:
+        Click the bookmarklet, then tap the left arrow to mark bad or right
+        arrow to mark good as images are automatically highlighted.
+      </p>
+    </li> -->
+    <li>
+      <p>
+        <a ng-href="{{open_case}}">Open Case</a>: Open a case folder from
+        anywhere. To use: Either highlight a case number and then click on the
+        bookmarklet, or click on the bookmarklet then enter a case number.
+        Bonus tip: If you do the latter, you can open a specific section
+        directly by entering a case number and a URL fragment (e.g.
+        <kbd>11235/updates</kbd> to view updates or <kbd>81321/tools</kbd> to
+        view case tools).
+      </p>
+    </li>
+  </ul>
+  <h2>Miscellany</h2>
+  <ul>
+    <li>
+      <p>
+        <a href="https://jsfiddle.net/ota6h1ej/64/embedded/result/">Compare
+        Cases</a>: Find image duplicates across multiple cases. To use: Open the
+        link, add as many cases as you need. Copy/paste image names from each
+        case into the tool, and then click compare.
+      </p>
+    </li>
+  </ul>
+</body>
 </html>
