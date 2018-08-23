@@ -4,7 +4,7 @@ const {promisify} = require('util')
 const fs = require('fs')
 const read = promisify(fs.readFile)
 const write = promisify(fs.writeFile)
-const bookmarklet = require('bookmarklet')
+const bookmarklet = require('./bookmarklet')
 const SRC_DIR = path.join(__dirname, 'src')
 const DEST_DIR = path.join(__dirname, 'dist')
 
