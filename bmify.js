@@ -69,7 +69,7 @@ if (module.parent) {
   // Add version print?
   // Add help print?
   if (args.length > 2) {
-    die('many arguments.\n\n')
+    die('Too many arguments.\n\n')
   }
   bookmarkletify(args[0], args[1])
     .then(() => console.log('bmify: Done.'))
