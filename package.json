@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "A collection of bookmarklets to make work easier.",
   "scripts": {
-    "bmify": "node ./bmify.js",
+    "bmify": "node ./bmify.js"
   },
   "author": "WJH",
   "license": "ISC",
   "devDependencies": {
-    "bookmarklet": "1.0.1",
-    "standard": "11.0.1"
+    "md5": "2.2.1",
+    "standard": "11.0.1",
+    "uglify-es": "3.3.9"
   }
 }
