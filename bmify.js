@@ -49,7 +49,17 @@ function getDestination (dest, src) {
   if (/\.\w+?$/.test(dest)) {
     return dest
   }
-  return fs.statSync(dest).isDirectory() ? path.join(dest, filename) : dest
+  let isDir
+  try {
+    fs.statSync(dest).isDirectory()
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      isDir = false
+    } else {
+      throw err
+    }
+  }
+  return isDir ? path.join(dest, filename) : dest
 }
 
 if (module.parent) {
