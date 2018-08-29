@@ -34,7 +34,11 @@ function getSource (src) {
 }
 
 function getDestination (dest, src) {
-  const filename = path.basename(src)
+  let filename = path.basename(src)
+  const ext = path.extname(src)
+  if (ext) {
+    filename = filename.slice(-ext.length) + '.url'
+  }
   if (!dest) {
     return path.join(DEST_DIR, filename)
   }
