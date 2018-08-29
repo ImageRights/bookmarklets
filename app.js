@@ -14,7 +14,7 @@
       if ($scope.hasOwnProperty(name)) {
         throw new Error('Duplicate name: ' + name)
       }
-      $http.get('dist/' + name + '.js').then(function (res) {
+      $http.get('dist/' + name + '.url').then(function (res) {
         $scope[name] = res.data
       })
     })
