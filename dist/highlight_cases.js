@@ -1,0 +1,1 @@
+!function(){const e="#dfd",t="#fdd",n="#eee",o=(prompt("Enter a search term:")||"").trim();if(o)for(const{parentNode:r}of document.querySelectorAll("a.ng-binding small"))if(r.textContent.includes(o)){const o=r.querySelector("small").textContent.match(/(\w)(\d)/),c=o[1],l=+o[2];r.style.background="C"===c||"D"===c&&l<4?e:"D"===c?t:n}else r.style.background=""}();
