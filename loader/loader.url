@@ -1,0 +1,1 @@
+javascript:(function()%7B!function(e%2Ct%2Cm%2Cn)%7Bif(!e.getElementById(m))%7Bvar%20r%3De.getElementsByTagName(t)%5B0%5D%2C_%3De.createElement(t)%3B_.id%3D%22IR-bm-%22%2Bm%2C_.src%3D%22https%3A%2F%2Fwww.imagerights.com%2F__ID__.js%22%2Cr.parentNode.insertBefore(_%2Cr)%7D%7D(document%2C%22script%22%2C%22__ID__%22)%3B%7D)()
