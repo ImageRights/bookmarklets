@@ -1,6 +1,6 @@
 {
   "name": "imagerights-bookmarklets",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A collection of bookmarklets to make work easier.",
   "scripts": {
     "minify": "node ./controls/minify-src.js",
