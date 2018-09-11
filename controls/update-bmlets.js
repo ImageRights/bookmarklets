@@ -12,7 +12,7 @@ async function updateBmlets () {
     if (file === '.' || file === '..') {
       return
     }
-    return create(path.basename(file))
+    return create(file.slice(-path.extname(file).length))
   }))
   return true
 }
