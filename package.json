@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "A collection of bookmarklets to make work easier.",
   "scripts": {
-    "bmify": "node ./bmify.js"
+    "minify": "node ./controls/minify-src.js",
+    "bmlet": "node ./controls/create-bmlet.js",
+    "new": "node ./controls/create-new.js",
+    "update-loader": "node ./controls/update-loader.js",
+    "update-bmlets": "node ./controls/update-bmlets.js"
   },
   "author": "WJH",
   "license": "ISC",
