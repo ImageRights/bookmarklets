@@ -156,8 +156,9 @@
   } else {
     msg = findDate([text])
     if (msg) {
-      msg += '\nFound in text - not guarateed to be correct.'
-      if (copyToClipboard(msg)) {
+      const copied = copyToClipboard(msg)
+      msg += '\nFound in text - not guaranteed to be correct.'
+      if (copied) {
         msg += copyText
       }
     }
