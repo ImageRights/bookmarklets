@@ -93,8 +93,10 @@
     }
   }
   function singleMatch (re, str) {
-    if (typeof re === 'string' || !re.global) {
+    if (typeof re === 'string') {
       re = new RegExp(re, 'g')
+    } else if (!re.global) {
+      re = new RegExp(re.source, re.flags + 'g')
     }
     const match = str.match(re)
     if (!match) {
@@ -102,7 +104,7 @@
     } else if (match.length > 1) {
       throw new MultiError(null, 'regex', re)
     } else {
-      return str.match(new RegExp(re)) // new RegExp to remove global flag
+      return str.match(new RegExp(re.source, re.flags.replace(/g/, '')))
     }
   }
   // --- SEARCH FUNCTIONS
