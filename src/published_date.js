@@ -1,6 +1,17 @@
 ;(() => {
   'use strict'
   // --- GENERAL UTILITIES
+  class MultiError extends Error {
+    constructor (msg, ...args) {
+      super(msg || new.target.defaultMessage)
+      if (args.length) {
+        this[args[0]] = args[1]
+      }
+    }
+    static get defaultMessage () {
+      return 'Multiple possible dates found.'
+    }
+  }
   const DATES = (() => {
     const months = [
       'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
@@ -62,6 +73,10 @@
           return normalizeDate(date)
         }
       } catch (e) {
+        if (e instanceof MultiError) {
+          window.alert(MultiError.defaultMessage)
+          throw e
+        }
         console.error(e)
       }
     }
@@ -74,9 +89,7 @@
     } else if (result.length === 1) {
       return result[0]
     } else {
-      const err = new Error('Multiple query results found.')
-      err.query = query
-      throw err
+      throw new MultiError(null, 'query', query)
     }
   }
   function singleMatch (re, str) {
@@ -87,7 +100,7 @@
     if (!match) {
       return null
     } else if (match.length > 1) {
-      throw new Error('Multiple regex matches found.')
+      throw new MultiError(null, 'regex', re)
     } else {
       return str.match(new RegExp(re)) // new RegExp to remove global flag
     }
