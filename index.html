@@ -9,14 +9,14 @@
   <script>window.angular || document.write('\x3Cscript src="lib/angular.min.js">\x3C/script>')</script>
   <script src="app.js"></script>
 </head>
-<body ng-controller="main">
+<body>
   <h1>ImageRights Bookmarklets &amp; Tools</h1>
   <p>Drag a bookmarklet link below into your bookmarks bar to use it.</p>
   <h2>Bookmarklets</h2>
   <ul>
     <li>
       <p>
-        <a ng-href="{{find_image}}">Find Image</a>: Automatically scroll through
+        <a ir-bmlet="load find_image">Find Image</a>: Automatically scroll through
         an image set to find an image. To use: Search for an image by name.
         Click the link to open the image set. Click the bookmarklet. It will ask
         you to enter a time in milliseconds to wait between page loads,
@@ -28,7 +28,7 @@
     </li>
     <li>
       <p>
-        <a ng-href="{{highlight_cases}}">Highlight Cases</a>: Make finding other
+        <a ir-bmlet="load highlight_cases">Highlight Cases</a>: Make finding other
         cases with the same infringer/client easier by highlighting matches in
         the case list. Uses different colors for new, active, and closed/settled
         cases. To use: View other cases against an infringer, then click the
@@ -39,14 +39,14 @@
     </li>
     <li>
       <p>
-        <a ng-href="{{impersonate_user}}">Impersonate User</a>: Impersonate a
+        <a ir-bmlet="static impersonate_user">Impersonate User</a>: Impersonate a
         user. To use: Either highlight a user ID number and then click the
         bookmarklet or click the bookmarklet and then enter a user ID number.
       </p>
     </li>
     <!-- <li>
       <p>
-        <a ng-href="{{keyboard_verify}}">Keyboard Verify</a>: Make verifying
+        <a ir-bmlet="static keyboard_verify">Keyboard Verify</a>: Make verifying
         unconfirmed image sightings faster by using keyboard input. Works best
         when verifying groups of images with one sighting per domain. To use:
         Click the bookmarklet, then tap the left arrow to mark bad or right
@@ -55,7 +55,7 @@
     </li> -->
     <li>
       <p>
-        <a ng-href="{{open_case}}">Open Case</a>: Open a case folder from
+        <a ir-bmlet="static open_case">Open Case</a>: Open a case folder from
         anywhere. To use: Either highlight a case number and then click on the
         bookmarklet, or click on the bookmarklet then enter a case number.
         Bonus tip: If you do the latter, you can open a specific section
