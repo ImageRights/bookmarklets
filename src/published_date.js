@@ -82,16 +82,6 @@
     }
     return null
   }
-  function querySelectorUnique (query) {
-    const result = document.querySelectorAll(query)
-    if (result.length === 0) {
-      return null
-    } else if (result.length === 1) {
-      return result[0]
-    } else {
-      throw new MultiError(null, 'query', query)
-    }
-  }
   function singleMatch (re, str) {
     if (typeof re === 'string') {
       re = new RegExp(re, 'g')
@@ -109,9 +99,20 @@
   }
   // --- SEARCH FUNCTIONS
   function find (query, attr) {
+    // Find a single element matching a query, or multiple if they all
+    // have the same target attribute value
     return function () {
-      const elt = querySelectorUnique(query)
-      return elt && elt.getAttribute(attr)
+      const result = document.querySelectorAll(query)
+      if (result.length === 0) {
+        return null
+      }
+      const val = result[0].getAttribute(attr)
+      for (let i = 1; i < result.length; i += 1) {
+        if (result[i].getAttribute(attr) !== val) {
+          throw new MultiError(null, 'query', query)
+        }
+      }
+      return val
     }
   }
   function url (href = location.href) {
