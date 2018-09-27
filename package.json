@@ -1,18 +1,17 @@
 {
   "name": "imagerights-bookmarklets",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A collection of bookmarklets to make work easier.",
   "scripts": {
-    "minify": "node ./controls/minify-src.js",
-    "bmlet": "node ./controls/create-bmlet.js",
-    "new": "node ./controls/create-new.js",
-    "update-loader": "node ./controls/update-loader.js",
-    "update-bmlets": "node ./controls/update-bmlets.js"
+    "minify": "node ./controls/publish.js \"minify\" \"./src\" \"./min\" \".js\"",
+    "bmify": "node ./controls/publish.js \"bmify\" \"./src\" \"./static\" \".url\"",
+    "update-loader": "node ./controls/update-loader.js"
   },
   "author": "WJH",
   "license": "ISC",
   "devDependencies": {
     "md5": "2.2.1",
+    "parcel-bundler": "1.10.1",
     "standard": "11.0.1",
     "uglify-es": "3.3.9"
   }
