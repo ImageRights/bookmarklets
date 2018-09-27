@@ -115,6 +115,16 @@
       return val
     }
   }
+  function text (str = document.body.textContent) {
+    const Y = DATES.regex.year
+    const M = DATES.regex.month_str
+    const D = DATES.regex.date
+    const sep = '\\W+?'
+    const mdy = M + sep + D + sep + Y
+    const dmy = D + sep + M + sep + Y
+    const match = singleMatch(mdy, str) || singleMatch(dmy, str)
+    return match ? match[0] : null
+  }
   function url (href = location.href) {
     // Searches for dates in URL
     const Y = DATES.regex.year
@@ -127,16 +137,6 @@
     }
     const [, y, m, d] = match
     return new Date(y.length === 2 ? '20' + y : y, m - 1, d)
-  }
-  function text (str = document.body.textContent) {
-    const Y = DATES.regex.year
-    const M = DATES.regex.month_str
-    const D = DATES.regex.date
-    const sep = '\\W+?'
-    const mdy = M + sep + D + sep + Y
-    const dmy = D + sep + M + sep + Y
-    const match = singleMatch(mdy, str) || singleMatch(dmy, str)
-    return match ? match[0] : null
   }
   // --- EXECUTE SCRIPT
   let msg = findDate([
