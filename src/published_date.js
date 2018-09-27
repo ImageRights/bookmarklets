@@ -58,9 +58,9 @@
     const date = new Date(input)
     const months = DATES.months
     return [
-      (d => d < 10 ? '0' + d : d)(date.getDate()),
-      months[date.getMonth()],
-      date.getFullYear()
+      (d => d < 10 ? '0' + d : d)(date.getUTCDate()),
+      months[date.getUTCMonth()],
+      date.getUTCFullYear()
     ].join(' ')
   }
   function findDate (searchFuncs) {
