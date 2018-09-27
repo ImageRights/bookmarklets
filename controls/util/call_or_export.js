@@ -1,5 +1,5 @@
 'use strict'
-module.exports = function callOrExport (m, fn) {
+module.exports = function (m, fn) {
   if (fn) {
     m.exports = fn
   }
