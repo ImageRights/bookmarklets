@@ -115,6 +115,29 @@
       return val
     }
   }
+  function ldJson () {
+    const scr = document.querySelectorAll('script[type="application/ld+json"]')
+    let date = null
+    for (const s of scr) {
+      let json
+      try {
+        json = JSON.parse(s.textContent.trim())
+      } catch (e) {
+        continue
+      }
+      let d = json.datePublished || json.dateModified
+      if (d) {
+        if (date) {
+          if (date === d) {
+            throw new MultiError()
+          }
+        } else {
+          date = d
+        }
+      }
+    }
+    return date
+  }
   function text (str = document.body.textContent) {
     const Y = DATES.regex.year
     const M = DATES.regex.month_str
@@ -145,7 +168,8 @@
     find('meta[itemprop=dateCreated]', 'content'),
     find('meta[itemprop=datePublished]', 'content'),
     find('[datetime]', 'datetime'),
-    url
+    url,
+    ldJson
   ])
   let notify = window.alert
   const copyText = '\n(Copied to clipboard)'
