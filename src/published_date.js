@@ -138,6 +138,11 @@
     }
     return date
   }
+  function ogImageUrl () {
+    // Checkes the URL of the og:image metadata for a date
+    const meta = find('meta[property="og:image"]', 'content')()
+    return meta ? url(meta) : null
+  }
   function text (str = document.body.textContent) {
     const Y = DATES.regex.year
     const M = DATES.regex.month_str
@@ -169,7 +174,8 @@
     find('meta[itemprop=datePublished]', 'content'),
     find('[datetime]', 'datetime'),
     url,
-    ldJson
+    ldJson,
+    ogImageUrl
   ])
   let notify = window.alert
   const copyText = '\n(Copied to clipboard)'
