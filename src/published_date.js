@@ -34,7 +34,7 @@
     return {months, regex}
   })()
   function copyToClipboard (text) {
-    // Does as advertised. Returns boolean based on success
+    // Does as advertised. Returns boolean based on success.
     try {
       const node = document.createElement('textarea')
       const selection = document.getSelection()
@@ -83,6 +83,7 @@
     return null
   }
   function singleMatch (re, str) {
+    // Checks if a string matches against a pattern exactly once
     if (typeof re === 'string') {
       re = new RegExp(re, 'g')
     } else if (!re.global) {
@@ -116,6 +117,7 @@
     }
   }
   function ldJson () {
+    // Search in JSON-LD script tags
     const scr = document.querySelectorAll('script[type="application/ld+json"]')
     let date = null
     for (const s of scr) {
@@ -144,6 +146,7 @@
     return meta ? url(meta) : null
   }
   function text (str = document.body.textContent) {
+    // Search in a string of text
     const Y = DATES.regex.year
     const M = DATES.regex.month_str
     const D = DATES.regex.date
