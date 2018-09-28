@@ -1,1 +1,0 @@
-!function(t){"use strict";if(t=window.getSelection().toString().trim()){if(/\D/.test(t))return alert("Selected text is not a case number.");t+="/claims"}else t=window.prompt("Case #").trim(),/\D/.test(t)||(t+="/claims");window.open("https://www.imagerights.com/admin#/cases/"+t)}();

@@ -1,1 +1,0 @@
-!function(t){"use strict";if(t=window.getSelection().toString().trim()){if(/\D/.test(t))return alert("Selected text is not a number.")}else t=window.prompt("User #").trim();location.href="https://www.imagerights.com/admin_impersonation/"+t}();
