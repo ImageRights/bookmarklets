@@ -16,6 +16,6 @@ const regex = {
   month_num_long: '\\b(0\\d|1[0-2])\\b',
   month_num: '\\b(0?\\d|1[0-2])\\b',
   month_str: `\\b(${reMonths})\\b`,
-  month_any: `\\0?\\d|1[0-2]|b(${reMonths})\\b`
+  month_any: `\\b0?\\d|1[0-2]|(${reMonths})\\b`
 }
 module.exports = {months, regex}
