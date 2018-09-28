@@ -11,7 +11,8 @@ let msg = findDate([
   () => search.query('[datetime]', 'datetime'),
   search.url,
   search.ldJson,
-  search.ogImageUrl
+  search.ogImageUrl,
+  search.dateClass
 ])
 let notify = window.alert
 const copyText = '\n(Copied to clipboard)'

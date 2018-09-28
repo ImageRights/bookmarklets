@@ -3,6 +3,7 @@
 //   exports[str] = require('./' + str)
 // })
 module.exports = {
+  dateClass: require('./dateClass'),
   ldJson: require('./ldJson'),
   ogImageUrl: require('./ogImageUrl'),
   query: require('./query'),
