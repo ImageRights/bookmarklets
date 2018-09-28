@@ -8,7 +8,7 @@ const path = require('path')
 const INPUT_FILE = path.resolve(__dirname, '../loader/loader.js')
 const OUTPUT_FILE = path.resolve(__dirname, '../loader/loader.url')
 
-async function updateTemplate () {
+async function updateLoader () {
   const source = await read(INPUT_FILE, 'utf8')
   const data = bookmarklet.parseFile(source)
   if (data.errors) {
@@ -19,4 +19,4 @@ async function updateTemplate () {
   return true
 }
 
-require('../lib/call-or-export')(module, updateTemplate)
+require('./util/call_or_export')(module, updateLoader)
