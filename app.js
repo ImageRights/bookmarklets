@@ -14,7 +14,11 @@
         return response.data
       })
     }
-    var loader = load('./loader/loader.url')
+    var loader = load('./loader/loader.url').then(function (bmlet) {
+      var path = location.pathname
+      path = location.origin + path.slice(0, path.lastIndexOf('/')) + '/min/'
+      return bmlet.replace('__PATH__', encodeURIComponent(path))
+    })
     function link (scope, elt, attrs) {
       var info = attrs.irBmlet.split(' ')
       var type = info[0]
