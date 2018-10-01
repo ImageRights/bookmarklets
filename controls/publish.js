@@ -13,7 +13,7 @@ function parse (PARSER_FILE, IN_DIR, OUT_DIR, OUT_EXT, ...names) {
     const output = path.resolve(OUT_DIR, name + OUT_EXT)
     let code
     if (await isDir(input)) {
-      const bundled = await bundle(input, OUT_DIR)
+      const bundled = await bundle(input, OUT_DIR, OUT_EXT)
       if (bundled !== output) {
         throw new Error('Parcel bundled to unexpected location.')
       }
