@@ -2,10 +2,10 @@
 'use strict'
 const Bundler = require('parcel-bundler')
 const path = require('path')
-module.exports = async function (indir, outdir) {
+module.exports = async function (indir, outdir, ext) {
   const options = {
     outDir: outdir, // The out directory to put the build files in, defaults to dist
-    outFile: path.basename(indir) + '.js', // The name of the outputFile
+    outFile: path.basename(indir) + ext, // The name of the outputFile
     watch: false, // whether to watch the files and rebuild them on change, defaults to process.env.NODE_ENV !== 'production'
     cache: false, // Enabled or disables caching, defaults to true
     contentHash: false, // Disable content hash from being included on the filename
