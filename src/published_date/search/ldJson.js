@@ -22,7 +22,7 @@ module.exports = function ldJson () {
     }
     if (found) {
       if (date) {
-        if (date === found) {
+        if (date !== found) {
           throw new MultiError()
         }
       } else {
