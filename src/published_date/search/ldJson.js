@@ -15,7 +15,7 @@ module.exports = function ldJson () {
     } catch (e) {
       // Check malformed JSON
       const match = singleMatch(/"datePublished":\s*?"([^"]+?)"/, text) ||
-        singleMatch(/"datePublished":\s*?"([^"]+?)"/, text)
+        singleMatch(/"dateModified":\s*?"([^"]+?)"/, text)
       if (match) {
         found = match[1]
       }
