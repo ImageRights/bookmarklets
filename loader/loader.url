@@ -1,1 +1,1 @@
-javascript:(function()%7B!function(_%2Ce%2Cc%2Cn)%7Bvar%20t%3D_.createElement(%22script%22)%3Bt.src%3D%22__PATH____ID__.js%22%2C_.head.appendChild(t)%7D(document)%3B%7D)()
+javascript:(function()%7B!function(e%2Cr%2Cn%2Co)%7Bvar%20t%3De.createElement(%22script%22)%3Bt.addEventListener(%22error%22%2Cfunction(e)%7Breturn%20window.alert(%22An%20error%20occurred%20and%20the%20bookmarklet%20could%20not%20be%20loaded.%22)%7D%2C%7Bonce%3A!0%7D)%2Ct.src%3D%22__PATH____ID__.js%22%2Ce.head.appendChild(t)%7D(document)%3B%7D)()
