@@ -12,6 +12,7 @@ const search = require('./search')
     () => search.query('meta[name=parsely-pub-date]', 'content'),
     () => search.query('meta[itemprop=dateCreated]', 'content'),
     () => search.query('meta[itemprop=datePublished]', 'content'),
+    () => search.query('meta[name="sailthru.date"]', 'content'),
     () => search.query('[datetime]', 'datetime'),
     search.url,
     search.ldJson,
