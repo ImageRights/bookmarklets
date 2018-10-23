@@ -3,6 +3,6 @@
 const query = require('./query')
 const text = require('./text')
 module.exports = function () {
-  const str = query('[class*=date]', null, 'textContent')
+  const str = query('[class*=date]:not([class*=validate])', null, 'textContent')
   return str ? text(str) || str : null
 }
