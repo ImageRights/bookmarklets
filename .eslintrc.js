@@ -4,9 +4,9 @@ module.exports = {
     "browser": true
   },
   "globals": {
-    "jQuery": false,
-    "$": false,
-    "angular": false
+    "jQuery": true,
+    "$": true,
+    "angular": true
   },
   "rules": {
     "curly": ["error", "all"],
