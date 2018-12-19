@@ -1,15 +1,20 @@
 ;(function (id) {
   'use strict'
-  id = window.getSelection().toString().trim()
-  if (id) {
-    if (/\D/.test(id)) {
-      return alert('Selected text is not a case number.')
-    }
-    id += '/text'
+  id = getSelection().toString() || prompt('Case #')
+  if (!id) {
+    return // Nothing entered to open
+  }
+  id = id.trim()
+  const usco = /USCO\W*?(\d+)/i.exec(id)
+  if (usco) {
+    id = usco[1] + '/text'
   } else {
-    id = window.prompt('Case #').trim()
-    if (!/\D/.test(id)) {
-      id += '/text'
+    const url = /^(\d+?)(\/\w+?)?$/.exec(id)
+    if (url) {
+      // url == [full match, USCO id, path]
+      id = url[1] + (url[2] || '/text')
+    } else {
+      return alert("That's not a USCO registration number.")
     }
   }
   window.open('https://www.imagerights.com/admin#/usco_registrations/' + id)
