@@ -6,16 +6,17 @@ if (!window._babelPolyfill) {
 const findDate = require('./util/findDate')
 const copyToClipboard = require('./util/copyToClipboard')
 const search = require('./search')
+const { meta } = search
 ;(async () => {
   let msg = findDate([
-    () => search.query('meta[property="article:published_time"]', 'content'),
-    () => search.query('meta[name=parsely-pub-date]', 'content'),
-    () => search.query('meta[itemprop=dateCreated]', 'content'),
-    () => search.query('meta[itemprop=datePublished]', 'content'),
-    () => search.query('meta[name="sailthru.date"]', 'content'),
-    () => search.query('meta[name="dc.date"]', 'content'),
-    () => search.query('meta[name="dcterms.created"]', 'content'),
-    () => search.query('meta[name="dcterms.modified"]', 'content'),
+    meta('article:published_time', 'property'),
+    meta('parsely-pub-date'),
+    meta('dateCreated', 'itemprop'),
+    meta('datePublished', 'itemprop'),
+    meta('sailthru.date'),
+    meta('dc.date'),
+    meta('dcterms.created'),
+    meta('dcterms.modified'),
     () => search.query('[datetime]', 'datetime'),
     search.url,
     search.ldJson,

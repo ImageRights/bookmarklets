@@ -5,6 +5,7 @@
 module.exports = {
   dateClass: require('./dateClass'),
   ldJson: require('./ldJson'),
+  meta: require('./meta'),
   ogImageUrl: require('./ogImageUrl'),
   query: require('./query'),
   text: require('./text'),
