@@ -1,10 +1,16 @@
 // An error that indicates multiple possible dates have been found
 'use strict'
 class MultiError extends Error {
-  constructor (msg, ...args) {
+  constructor (msg, prop, val) {
     super(msg || new.target.defaultMessage)
-    if (args.length) {
-      this[args[0]] = args[1]
+    if (prop) {
+      if (typeof prop === 'string') {
+        this[prop] = val
+      } else if (typeof prop === 'object') {
+        Object.assign(this, prop)
+      } else {
+        throw new TypeError('Unexpected value as MultiError property name.')
+      }
     }
   }
 }
