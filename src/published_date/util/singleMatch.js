@@ -7,12 +7,12 @@ module.exports = function singleMatch (re, str) {
   } else if (!re.global) {
     re = new RegExp(re.source, re.flags + 'g')
   }
-  const match = str.match(re)
+  const match = re.exec(str)
   if (!match) {
     return null
-  } else if (match.length > 1) {
+  } else if (re.exec(str)) {
     throw new MultiError(null, 'regex', re)
   } else {
-    return str.match(new RegExp(re.source, re.flags.replace(/g/, '')))
+    return match
   }
 }
