@@ -9,6 +9,7 @@ const search = require('./search')
 const { meta } = search
 ;(async () => {
   let msg = findDate([
+    meta('date'),
     meta('article:published_time', 'property'),
     meta('parsely-pub-date'),
     meta('dateCreated', 'itemprop'),
