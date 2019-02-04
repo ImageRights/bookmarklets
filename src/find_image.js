@@ -1,30 +1,46 @@
-;(function () {
-  const idx = location.hash.indexOf('?')
-  const target = new URLSearchParams(location.hash.slice(idx + 1)).get('highlight')
-  if (!target) {
-    return alert('Cannot search for missing target.')
+;(async () => {
+  'use strict'
+  const search = location.hash.match(/(?:&?)highlight=(\d+)/i)
+  if (!search) {
+    return alert('No image to search for.')
   }
-  let delay = prompt('Enter a delay in milliseconds:', 500)
-  if (!delay) {
-    return
-  }
-  delay |= 0
-  if (!delay) {
-    return alert('Invalid delay.')
-  }
-  const container = $('.ir-thumbnail-container')
-  return (function find () {
-    const elt = container.find(`.buttons-right a[href$="=${target}"]`)
-    if (elt.length) {
-      const thumb = elt.closest('.ir-thumbnail')
-      thumb.find('.glyphicon-ok').click()
-      return thumb[0].scrollIntoView()
+  const target = +search[1]
+  const $elt = $('.ir-thumbnail-container')
+  const scope = $elt.scope()
+  const $http = $elt.injector().get('$http')
+  const url = (scope => {
+    const set = scope.image_set.id
+    const u = scope.current_user.id
+    const pp = scope.pagination.itemsPerPage
+    return `/api/v1/image_set/${set}/images?per_page=${pp}&user_id=${u}&page=`
+  })(scope)
+  let min = 1
+  let curr = scope.pagination.currentPage
+  let max = scope.pagination.totalPages
+  let {records} = scope
+  const finish = async cb => {
+    scope.pagination.setCurrentPage(curr)
+    scope.$apply()
+    while (scope.loadingTracker.active()) {
+      await new Promise(requestAnimationFrame)
     }
-    const next = $('li:not(.disabled) > a:contains(Next)')
-    if (!next.length) {
-      return alert('Could not find target.')
+    return cb()
+  }
+  do {
+    const found = records.find(img => img.id === target)
+    if (found) {
+      return finish(() => scope.do_highlighting())
+    } else if (records[0].id > target) {
+      max = curr - 1
+    } else if (records[records.length - 1].id < target) {
+      min = curr + 1
+    } else {
+      return finish(() => {
+        return alert("The target image should be on this page, but it's not...")
+      })
     }
-    next.click()
-    return setTimeout(find, delay, target, container, delay)
-  })()
+    curr = ((min + max) / 2) | 0
+    const res = await $http.get(url + curr)
+    records = res.data
+  } while (min <= max)
 })()
