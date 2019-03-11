@@ -17,7 +17,7 @@
   let min = 1
   let curr = scope.pagination.currentPage
   let max = scope.pagination.totalPages
-  let {records} = scope
+  let { records } = scope
   const finish = async cb => {
     scope.pagination.setCurrentPage(curr)
     scope.$apply()

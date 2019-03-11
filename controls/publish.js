@@ -1,7 +1,7 @@
 'use strict'
 const bundle = require('./util/bundle')
 const isDir = require('./util/is_directory')
-const {promisify} = require('util')
+const { promisify } = require('util')
 const fs = require('fs')
 const write = promisify(fs.writeFile)
 const path = require('path')

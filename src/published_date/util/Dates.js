@@ -18,4 +18,4 @@ const regex = {
   month_str: `\\b(${reMonths})\\b`,
   month_any: `\\b0?\\d|1[0-2]|(${reMonths})\\b`
 }
-module.exports = {months, regex}
+module.exports = { months, regex }

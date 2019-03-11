@@ -1,6 +1,6 @@
 'use strict'
 const bookmarklet = require('../lib/bookmarklet')
-const {promisify} = require('util')
+const { promisify } = require('util')
 const fs = require('fs')
 const read = promisify(fs.readFile)
 const write = promisify(fs.writeFile)

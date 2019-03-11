@@ -8,7 +8,7 @@
   if (!search) {
     return
   }
-  for (const {parentNode: elt} of document.querySelectorAll('a.ng-binding small')) {
+  for (const { parentNode: elt } of document.querySelectorAll('a.ng-binding small')) {
     if (elt.textContent.includes(search)) {
       const match = elt.querySelector('small').textContent.match(/(\w)(\d)/)
       const W = match[1]
