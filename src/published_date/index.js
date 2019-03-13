@@ -18,6 +18,7 @@ const { meta } = search
     meta('dc.date'),
     meta('dcterms.created'),
     meta('dcterms.modified'),
+    () => search.query('time.published', 'datetime'),
     () => search.query('[datetime]', 'datetime'),
     search.url,
     search.ldJson,
