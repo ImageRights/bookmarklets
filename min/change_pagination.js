@@ -1,0 +1,1 @@
+!function(){"use strict";var e=$(".container").scope(),t=e.pagination,r=t.constructor.prototype.itemsPerPage,a=(prompt("Enter a number of items per page",r)||"").trim();if(a){if(/\D/.test(a))return alert("That's not a valid number.");a=+a>100?100:+a;var n=1+t.itemsPerPage*(t.currentPage-1);t.setItemsPerPage(a),t.setCurrentPage(Math.ceil(n/a)),e.$apply()}}();
