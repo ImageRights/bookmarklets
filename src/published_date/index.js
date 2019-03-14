@@ -11,6 +11,7 @@ const { meta } = search
   let msg = findDate([
     meta('date'),
     meta('article:published_time', 'property'),
+    meta('og:article.published_time'),
     meta('parsely-pub-date'),
     meta('dateCreated', 'itemprop'),
     meta('datePublished', 'itemprop'),
