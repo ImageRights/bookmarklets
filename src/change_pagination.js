@@ -1,6 +1,9 @@
 ;(function () {
   'use strict'
-  var scope = $('.container').scope()
+  // Multiple controllers on page - find whichever one has the pagination on it
+  var scope = $('[ng-controller]').get().reduce(function (scope, elt) {
+    return scope.pagination ? scope : $(elt).scope()
+  }, {})
   var pagination = scope.pagination
   var def = pagination.constructor.prototype.itemsPerPage
   var perPage = (prompt('Enter a number of items per page', def) || '').trim()
@@ -13,8 +16,14 @@
   } else {
     perPage = +perPage
   }
-  var firstItemOnPage = 1 + pagination.itemsPerPage * (pagination.currentPage - 1)
   pagination.setItemsPerPage(perPage)
-  pagination.setCurrentPage(Math.ceil(firstItemOnPage / perPage))
+  var firstItemOnPage = 1 + pagination.itemsPerPage * (pagination.currentPage - 1)
+  var newPage = Math.ceil(firstItemOnPage / perPage)
+  if (newPage === pagination.currentPage) {
+    // Need to change page to properly trigger reload
+    pagination.setCurrentPage(newPage === 1 ? 2 : 1)
+    scope.$apply()
+  }
+  pagination.setCurrentPage(newPage)
   scope.$apply()
 })()
