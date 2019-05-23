@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <button aria-hidden="true" class="close" ng-click="cancel()" type="button">&times;</button>
+  <h4 class="modal-title">
+    Impersonate User &amp; Load Image Set
+  </h4>
+</div>
+<div class="modal-body">
+  <div class="ng-form form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-3">Image Name</label>
+      <div class="col-sm-9">
+        <div class="form-control list-group-item-danger" ng-show="!data.images.length">This case has no images.</div>
+        <select class="form-control" ng-show="data.images.length" ng-model="data.selection" ng-options="img.name for img in data.images"></select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-default" ng-click="cancel()" type="button">Close</button>
+  <button class="btn btn-primary" ng-click="success()" ng-disabled="!data.selection" type="button">Find Image</button>
+</div>
