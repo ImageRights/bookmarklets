@@ -18,6 +18,7 @@ const { meta } = search
     meta('datePublished', 'itemprop'),
     meta('sailthru.date'),
     meta('dc.date'),
+    meta('dcterms.date'),
     meta('dcterms.created'),
     meta('dcterms.modified'),
     () => search.query('time.published', 'datetime'),
