@@ -1,7 +1,7 @@
 ;(function () {
   'use strict'
   // Multiple controllers on page - find whichever one has the pagination on it
-  var scope = $('[ng-controller]').get().reduce(function (scope, elt) {
+  var scope = $('[ir-table-pagination]').get().reduce(function (scope, elt) {
     return scope.pagination ? scope : $(elt).scope()
   }, {})
   var pagination = scope.pagination
