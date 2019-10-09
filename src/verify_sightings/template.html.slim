@@ -1,0 +1,60 @@
+.container
+  nav.navbar.navbar-inverse role="navigation"
+    .navbar-header: .navbar-brand Sightings Verification
+    form.navbar-form role="search": .form-group
+      input.form-control(
+        hajo-typeahead="s as s.title for s in suggestions.user($viewValue, $offset)"
+        typeahead-on-select="change_page(0)"
+        typeahead-editable="false"
+        ng-model="current.user"
+        ng-hide="current.user"
+        placeholder="Search by user name ..."
+        type="text"
+        style="width:300px"
+      )
+      button.btn.btn-default role="button" ng-show="current.user" ng-click="current.user = null" {{current.user.title}} (clear)
+
+  .row.text-center ng-hide="groups"
+    .loading-indicator ng-show="loadingTracker.active()"
+      img> ng-show="loading_icon" ng-src="{{loading_icon}}"
+      span ng-show="attempt == 1" Loading ...
+      span ng-show="attempt == 2" Retrying ...
+      span ng-show="attempt > 2" Attempt {{attempt}} ...
+    .text-danger ng-show="attempt == -1"
+      .glyphicon.glyphicon-exclamation-sign>
+      ' Attempts to get {{current.per_page}} groups failed.
+  .row.text-center ng-show="groups.length === 0"
+    b No sightings found.
+  .row.text-center.form-inline ng-show="groups.length"
+    .col-sm-2.col-sm-offset-3
+      button.btn.btn-link role="button" ng-click="change_page(-1)" ng-disabled="group.num_verified" &laquo;
+      span tooltip="{{current.per_page || '?'}} groups per page"
+        | Page {{current.page || 1}} / {{current.total_pages || '?'}}
+      button.btn.btn-link role="button" ng-click="change_page(1)" ng-disabled="group.num_verified" &raquo;
+    .col-sm-2
+      button.btn.btn-link role="button" ng-click="change_group(-1)" ng-disabled="group.num_verified" &laquo;
+      | Group {{(current.group || 0) + 1}} / {{groups ? groups.length : '?'}}
+      button.btn.btn-link role="button" ng-click="change_group(1)" ng-disabled="group.num_verified" &raquo;
+    .col-sm-2
+      button.btn.btn-link role="button" ng-click="change_image(-1)" &laquo;
+      | Image {{(current.image || 0) + 1}} / {{(group && group.claims) ? group.claims.length : '?'}}
+      button.btn.btn-link role="button" ng-click="change_image(1)" &raquo;
+
+  .row.text-center ng-show="groups" ng-keydown="keydown($event)"
+    .col-xs.col-sm-2.col-sm-offset-3
+      img.img-thumbnail ng-src="{{claim.image.thumb}}" style="max-width:120px;max-height:120px;box-sizing:content-box"
+      p: a ng-href="/show_full_image/{{claim.image.id}}" target="_blank"
+        span.glyphicon.glyphicon-new-window>
+        | Embiggen
+    .col-xs.col-sm-2
+      img.img-thumbnail ng-src="{{claim.image_url}}" style="max-width:120px;max-height:120px;box-sizing:content-box"
+      p: a ng-href="{{claim.image_url}}" target="_blank"
+        span.glyphicon.glyphicon-new-window>
+        | Embiggen
+    .col-xs.col-sm-2
+      p.col-xs.col-sm-6
+        button.btn.btn-success role="button" ng-click="mark_verified(true)" ng-disabled="loadingTracker.active()" Good
+      p.col-xs.col-sm-6
+        button.btn.btn-danger role="button" ng-click="mark_verified(false)" ng-disabled="loadingTracker.active()" Bad
+      p.col-xs
+        button.btn.btn-default role="button" ng-click="submit_verifications(group)" ng-disabled="!group || !group.num_verified" Submit ({{group.num_verified || 0}})

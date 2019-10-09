@@ -1,0 +1,62 @@
+<div class="container">
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+      <div class="navbar-brand">
+        Sightings Verification
+      </div>
+    </div>
+    <form class="navbar-form" role="search">
+      <div class="form-group">
+        <input class="form-control" hajo-typeahead="s as s.title for s in suggestions.user($viewValue, $offset)" ng-hide="current.user" ng-model="current.user" placeholder="Search by user name ..." style="width:300px" type="text" typeahead-editable="false" typeahead-on-select="change_page(0)" /><button class="btn btn-default" ng-click="current.user = null" ng-show="current.user" role="button">{{current.user.title}} (clear)</button>
+      </div>
+    </form>
+  </nav>
+  <div class="row text-center" ng-hide="groups">
+    <div class="loading-indicator" ng-show="loadingTracker.active()">
+      <img ng-show="loading_icon" ng-src="{{loading_icon}}" /> <span ng-show="attempt == 1">Loading ...</span><span ng-show="attempt == 2">Retrying ...</span><span ng-show="attempt &gt; 2">Attempt {{attempt}} ...</span>
+    </div>
+    <div class="text-danger" ng-show="attempt == -1">
+      <div class="glyphicon glyphicon-exclamation-sign"></div>
+      Attempts to get {{current.per_page}} groups failed.
+    </div>
+  </div>
+  <div class="row text-center" ng-show="groups.length === 0">
+    <b>No sightings found.</b>
+  </div>
+  <div class="row text-center form-inline" ng-show="groups.length">
+    <div class="col-sm-2 col-sm-offset-3">
+      <button class="btn btn-link" ng-click="change_page(-1)" ng-disabled="group.num_verified" role="button">&laquo;</button><span tooltip="{{current.per_page || &#39;?&#39;}} groups per page">Page {{current.page || 1}} / {{current.total_pages || '?'}}</span><button class="btn btn-link" ng-click="change_page(1)" ng-disabled="group.num_verified" role="button">&raquo;</button>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-link" ng-click="change_group(-1)" ng-disabled="group.num_verified" role="button">&laquo;</button>Group {{(current.group || 0) + 1}} / {{groups ? groups.length : '?'}}<button class="btn btn-link" ng-click="change_group(1)" ng-disabled="group.num_verified" role="button">&raquo;</button>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-link" ng-click="change_image(-1)" role="button">&laquo;</button>Image {{(current.image || 0) + 1}} / {{(group && group.claims) ? group.claims.length : '?'}}<button class="btn btn-link" ng-click="change_image(1)" role="button">&raquo;</button>
+    </div>
+  </div>
+  <div class="row text-center" ng-keydown="keydown($event)" ng-show="groups">
+    <div class="col-xs col-sm-2 col-sm-offset-3">
+      <img class="img-thumbnail" ng-src="{{claim.image.thumb}}" style="max-width:120px;max-height:120px;box-sizing:content-box" />
+      <p>
+        <a ng-href="/show_full_image/{{claim.image.id}}" target="_blank"><span class="glyphicon glyphicon-new-window"></span> Embiggen</a>
+      </p>
+    </div>
+    <div class="col-xs col-sm-2">
+      <img class="img-thumbnail" ng-src="{{claim.image_url}}" style="max-width:120px;max-height:120px;box-sizing:content-box" />
+      <p>
+        <a ng-href="{{claim.image_url}}" target="_blank"><span class="glyphicon glyphicon-new-window"></span> Embiggen</a>
+      </p>
+    </div>
+    <div class="col-xs col-sm-2">
+      <p class="col-xs col-sm-6">
+        <button class="btn btn-success" ng-click="mark_verified(true)" ng-disabled="loadingTracker.active()" role="button">Good</button>
+      </p>
+      <p class="col-xs col-sm-6">
+        <button class="btn btn-danger" ng-click="mark_verified(false)" ng-disabled="loadingTracker.active()" role="button">Bad</button>
+      </p>
+      <p class="col-xs">
+        <button class="btn btn-default" ng-click="submit_verifications(group)" ng-disabled="!group || !group.num_verified" role="button">Submit ({{group.num_verified || 0}})</button>
+      </p>
+    </div>
+  </div>
+</div>
