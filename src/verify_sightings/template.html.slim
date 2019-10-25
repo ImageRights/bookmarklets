@@ -39,8 +39,7 @@
       button.btn.btn-link role="button" ng-click="change_image(-1)" &laquo;
       | Image {{(current.image || 0) + 1}} / {{(group && group.claims) ? group.claims.length : '?'}}
       button.btn.btn-link role="button" ng-click="change_image(1)" &raquo;
-
-  .row.text-center ng-show="groups" ng-keydown="keydown($event)"
+  .row.text-center ng-show="groups"
     .col-xs.col-sm-2.col-sm-offset-3
       img.img-thumbnail ng-src="{{claim.image.thumb}}" style="max-width:120px;max-height:120px;box-sizing:content-box"
       p: a ng-href="/show_full_image/{{claim.image.id}}" target="_blank"
