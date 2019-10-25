@@ -159,8 +159,6 @@ injection.push(function ($scope, $http, $q, suggestions, promiseTracker) {
     const { current } = $scope
     if (!current || !current.user || !$scope.groups || !$scope.groups.length) {
       return
-    } else if ($scope.group && $scope.group.num_verified > 0) {
-      return $scope.submit_verifications($scope.group)
     } else if (n) {
       current.group = clamp(0, (current.group | 0) + n, $scope.groups.length - 1)
     }
@@ -264,8 +262,10 @@ injection.push(function ($scope, $http, $q, suggestions, promiseTracker) {
         }
       }
     } else {
-      // Not sure what's going on -- hard reset might fix things
-      return $scope.change_page(0)
+      // Not sure what's going on -- reset everything except user
+      const { user } = $scope.current
+      $scope.reset()
+      $scope.current.user = user
     }
   }
 
