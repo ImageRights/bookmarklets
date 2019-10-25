@@ -7,15 +7,15 @@
     </div>
     <form class="navbar-form" role="search">
       <div class="form-group">
-        <input class="form-control" hajo-typeahead="s as s.title for s in suggestions.user($viewValue, $offset)" ng-hide="current.user" ng-model="current.user" placeholder="Search by user name ..." style="width:300px" type="text" typeahead-editable="false" typeahead-on-select="change_page(0)" /><button class="btn btn-default" ng-click="current.user = null" ng-show="current.user" role="button">{{current.user.title}} (clear)</button>
+        <input class="form-control" hajo-typeahead="s as s.title for s in suggestions.user($viewValue, $offset)" ng-hide="current.user" ng-model="current.user" placeholder="Search by user name ..." style="width:300px" type="text" typeahead-editable="false" typeahead-on-select="change_page(0)" /><button class="btn btn-default" ng-click="reset()" ng-show="current.user" role="button">{{current.user.title}} (clear)</button>
       </div>
     </form>
   </nav>
   <div class="row text-center" ng-hide="groups">
     <div class="loading-indicator" ng-show="loadingTracker.active()">
-      <img ng-show="loading_icon" ng-src="{{loading_icon}}" /> <span ng-show="attempt == 1">Loading ...</span><span ng-show="attempt == 2">Retrying ...</span><span ng-show="attempt &gt; 2">Attempt {{attempt}} ...</span>
+      <img ng-show="loading_icon" ng-src="{{loading_icon}}" /> <span ng-show="current.attempt == 1">Loading ...</span><span ng-show="current.attempt == 2">Retrying ...</span><span ng-show="current.attempt &gt; 2">Attempt {{current.attempt}} ...</span>
     </div>
-    <div class="text-danger" ng-show="attempt == -1">
+    <div class="text-danger" ng-show="current.attempt == -1">
       <div class="glyphicon glyphicon-exclamation-sign"></div>
       Attempts to get {{current.per_page}} groups failed.
     </div>
@@ -55,7 +55,7 @@
         <button class="btn btn-danger" ng-click="mark_verified(false)" ng-disabled="loadingTracker.active()" role="button">Bad</button>
       </p>
       <p class="col-xs">
-        <button class="btn btn-default" ng-click="submit_verifications(group)" ng-disabled="!group || !group.num_verified" role="button">Submit ({{group.num_verified || 0}})</button>
+        <button class="btn btn-default" ng-click="submit_verifications(group)" ng-disabled="!group || !group.num_verified || loadingTracker.active()" role="button">Submit ({{group.num_verified || 0}})</button>
       </p>
     </div>
   </div>

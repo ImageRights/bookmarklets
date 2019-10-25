@@ -61,7 +61,10 @@ injection.push(function ($scope, $http, $q, suggestions, promiseTracker) {
   // URL isn't static because of Rails cache busting
   $scope.loading_icon = getLoadingIcon()
 
-  $scope.current = { page: 1, per_page: 15, group: 0, image: 0 }
+  $scope.reset = () => {
+    $scope.current = { page: 1, per_page: 15, group: 0, image: 0, attempt: 0 }
+  }
+  $scope.reset()
 
   function track (promise) {
     $scope.loadingTracker.addPromise(promise)
@@ -83,17 +86,17 @@ injection.push(function ($scope, $http, $q, suggestions, promiseTracker) {
       per_page: per,
       page: page
     }
-    $scope.attempt = 1
+    $scope.current.attempt = 1
     do {
       const result = await request('/api/v1/admin/sightings', { params })
       if (result.success) {
         return result.response
       }
-      $scope.attempt += 1
+      $scope.current.attempt += 1
       params.per_page = params.per_page / 2 | 0
       params.page = (index / params.per_page | 0) || 1
     } while (params.per_page > 0)
-    $scope.attempt = -1
+    $scope.current.attempt = -1
     throw new Error('Timed out too many times.')
   }
 
@@ -208,6 +211,7 @@ injection.push(function ($scope, $http, $q, suggestions, promiseTracker) {
     current.group = current.image = 0
     const res = await getSightings(current.user, current.page, current.per_page).catch(() => {})
     if (!res) {
+      $scope.$apply()
       return
     }
 

@@ -12,15 +12,15 @@
         type="text"
         style="width:300px"
       )
-      button.btn.btn-default role="button" ng-show="current.user" ng-click="current.user = null" {{current.user.title}} (clear)
+      button.btn.btn-default role="button" ng-show="current.user" ng-click="reset()" {{current.user.title}} (clear)
 
   .row.text-center ng-hide="groups"
     .loading-indicator ng-show="loadingTracker.active()"
       img> ng-show="loading_icon" ng-src="{{loading_icon}}"
-      span ng-show="attempt == 1" Loading ...
-      span ng-show="attempt == 2" Retrying ...
-      span ng-show="attempt > 2" Attempt {{attempt}} ...
-    .text-danger ng-show="attempt == -1"
+      span ng-show="current.attempt == 1" Loading ...
+      span ng-show="current.attempt == 2" Retrying ...
+      span ng-show="current.attempt > 2" Attempt {{current.attempt}} ...
+    .text-danger ng-show="current.attempt == -1"
       .glyphicon.glyphicon-exclamation-sign>
       ' Attempts to get {{current.per_page}} groups failed.
   .row.text-center ng-show="groups.length === 0"
@@ -57,4 +57,4 @@
       p.col-xs.col-sm-6
         button.btn.btn-danger role="button" ng-click="mark_verified(false)" ng-disabled="loadingTracker.active()" Bad
       p.col-xs
-        button.btn.btn-default role="button" ng-click="submit_verifications(group)" ng-disabled="!group || !group.num_verified" Submit ({{group.num_verified || 0}})
+        button.btn.btn-default role="button" ng-click="submit_verifications(group)" ng-disabled="!group || !group.num_verified || loadingTracker.active()" Submit ({{group.num_verified || 0}})
